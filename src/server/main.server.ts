@@ -6,47 +6,53 @@ import DCS from "@rbxts/dcs";
 const Server = SimpleInput.Server;
 Server.Listen();
 
-const DefaultBinds = new Map<Enum.KeyCode | Enum.UserInputType, string>([
-	[Enum.KeyCode.Q, "Dash"],
-	[Enum.KeyCode.E, "Equip"],
-]);
+Server.SetDefaultBinds(
+	new Map<Enum.KeyCode | Enum.UserInputType, string>([
+		[Enum.KeyCode.Q, "Dash"],
+		[Enum.KeyCode.E, "Equip"],
+	]),
+);
+Server.SetServerResponses(
+	new Map([
+		["Dash", (player: Player) => {}],
+		["Equip", (player: Player) => {}],
+	]),
+);
 
-const Responses = new Map<string, () => void>([
-	["Dash", () => print("Dash server")],
-	["Equip", () => print("Server Equiping!")],
-]);
+const BurnEffect = DCS.CreateStatusEffect({
+	Name: "Burn",
+	Duration: 10,
+	Tick: 0.5,
+	Effect: (entries) => {
+		const Model = entries.Model;
+		const Humanoid = Model.FindFirstChildWhichIsA("Humanoid");
 
-Server.SetDefaultBinds(DefaultBinds);
-Server.SetServerResponses(Responses);
-
-Players.PlayerAdded.Connect((player: Player) => {
-	print(`${player} has joined.`);
-});
-
-const DeathTimer = SimpleTimer.CreateTimer("DeathTimer", 5, 1, true);
-
-const BurnEffect = DCS.CreateStatusEffect("Burn", 5, 1, (entries) => {
-	const Model = entries.Model;
-	const Humanoid = Model.FindFirstChildWhichIsA("Humanoid");
-	if (!Humanoid) return;
-
-	Humanoid.Health = Humanoid.Health - 5;
+		if (Humanoid) {
+			Humanoid.Health -= 1;
+		}
+	},
 });
 
 DCS.AddStatusEffect(BurnEffect);
 
-const DashSkill = DCS.CreateSkill("Dash", (entries) => {
-	const Model = entries.Model;
-	const RootPart = Model.FindFirstChild("HumanoidRootPart") as BasePart;
+const DashSkill = DCS.CreateSkill({
+	Name: "Dash",
+	CastTime: 1,
+	Cooldown: 1,
+	Cast: (entries) => {
+		const Model = entries.Model;
+		const RootPart = Model.FindFirstChild("HumanoidRootPart") as BasePart;
 
-	if (RootPart) {
-		RootPart.AssemblyLinearVelocity = RootPart.CFrame.LookVector.mul(40);
-	}
+		if (RootPart) {
+			print(Model);
+		}
+	},
 });
 
-DCS.RegisterSkill(DashSkill);
+DCS.AddSkill(DashSkill);
 
 Players.PlayerAdded.Connect((player: Player) => {
+	print(`${player} has joined.`);
 	player.CharacterAdded.Connect((character: Model) => {
 		DCS.AddActor(character);
 
