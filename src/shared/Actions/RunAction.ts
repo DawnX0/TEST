@@ -3,10 +3,8 @@ import { ActionType } from "@rbxts/simpleaction";
 const RunAction: ActionType = {
 	Name: "Run",
 	InputMethod: "UserInput",
-	Gesture: Enum.KeyCode.LeftShift,
+	Gesture: Enum.KeyCode.W,
 	ClientOnStart: (player: Player) => {
-		print(`Client: ${player.Name} is sprinting`);
-
 		const character = player.Character;
 		if (character) {
 			const lastTick = (character.GetAttribute("sprintTick") as number) || 0;
@@ -29,7 +27,6 @@ const RunAction: ActionType = {
 		}
 	},
 	ServerOnStart: (player: Player) => {
-		print(`Server: ${player.Name} is sprinting`);
 		const character = player.Character;
 		if (character) {
 			character.SetAttribute("running", true);

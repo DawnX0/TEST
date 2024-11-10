@@ -6,6 +6,7 @@ const FistWeapon: MeleeWeaponType = {
 	Range: 3,
 	WeaponType: "Melee",
 	Endlag: 0.5,
+	ComboReset: 0.75,
 	Cooldown: 0.2,
 	ClientAttack: (model: Model) => {
 		print(`Client: Displaying fist attack effects for ${model.Name}`);
@@ -14,9 +15,14 @@ const FistWeapon: MeleeWeaponType = {
 		print(`Server: Fist attack by ${model.Name}`);
 	},
 	Animations: {
-		Block: "222",
+		Idle: "rbxassetid://18805809333",
+		Walk: "rbxassetid://18726527022",
+		Block: "rbxassetid://18744674229",
 		M1: {
 			[1]: "23",
+		},
+		HitReactions: {
+			[1]: "rbxassetid://18735088954",
 		},
 	},
 };
