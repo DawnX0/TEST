@@ -1,1 +1,201 @@
-{"name":"roblox-ts-game","className":"DataModel","filePaths":["default.project.json"],"children":[{"name":"ReplicatedStorage","className":"ReplicatedStorage","children":[{"name":"TS","className":"Folder","children":[{"name":"Actions","className":"Folder","children":[{"name":"ShiftAction","className":"ModuleScript","filePaths":["out\\shared\\Actions\\ShiftAction.luau"]}]},{"name":"Skills","className":"Folder","children":[{"name":"DashSkill","className":"ModuleScript","filePaths":["out\\shared\\Skills\\DashSkill.luau"]},{"name":"FireballSkill","className":"ModuleScript","filePaths":["out\\shared\\Skills\\FireballSkill.luau"]}]},{"name":"StatusEffects","className":"Folder","children":[{"name":"ColdEffect","className":"ModuleScript","filePaths":["out\\shared\\StatusEffects\\ColdEffect.luau"]},{"name":"HeatEffect","className":"ModuleScript","filePaths":["out\\shared\\StatusEffects\\HeatEffect.luau"]},{"name":"MeltEffect","className":"ModuleScript","filePaths":["out\\shared\\StatusEffects\\MeltEffect.luau"]}]},{"name":"Weapons","className":"Folder","children":[{"name":"FistWeapon","className":"ModuleScript","filePaths":["out\\shared\\Weapons\\FistWeapon.luau"]}]}]},{"name":"rbxts_include","className":"Folder","children":[{"name":"Promise","className":"ModuleScript","filePaths":["include\\Promise.lua"]},{"name":"RuntimeLib","className":"ModuleScript","filePaths":["include\\RuntimeLib.lua"]},{"name":"node_modules","className":"Folder","children":[{"name":"@rbxts","className":"Folder","children":[{"name":"object-utils","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\object-utils\\init.lua"]},{"name":"services","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\services\\init.lua"]},{"name":"simpleaction","className":"Folder","children":[{"name":"out","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\simpleaction\\out\\init.luau"]}]},{"name":"simpleskill","className":"Folder","children":[{"name":"out","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\simpleskill\\out\\init.luau"]}]},{"name":"simplestatuseffect","className":"Folder","children":[{"name":"out","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\simplestatuseffect\\out\\init.luau"]}]},{"name":"simpletimer","className":"Folder","children":[{"name":"out","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\simpletimer\\out\\init.luau"]}]},{"name":"simpleweapon","className":"Folder","children":[{"name":"out","className":"ModuleScript","filePaths":["node_modules\\@rbxts\\simpleweapon\\out\\init.luau"]}]}]}]}]}]},{"name":"ServerScriptService","className":"ServerScriptService","children":[{"name":"TS","className":"Folder","children":[{"name":"main","className":"Script","filePaths":["out\\server\\main.server.luau"]}]}]},{"name":"StarterPlayer","className":"StarterPlayer","children":[{"name":"StarterPlayerScripts","className":"StarterPlayerScripts","children":[{"name":"TS","className":"Folder","children":[{"name":"main","className":"LocalScript","filePaths":["out\\client\\main.client.luau"]}]}]}]}]}
+{
+	"name": "roblox-ts-game",
+	"className": "DataModel",
+	"filePaths": ["default.project.json"],
+	"children": [
+		{
+			"name": "ReplicatedStorage",
+			"className": "ReplicatedStorage",
+			"children": [
+				{
+					"name": "TS",
+					"className": "Folder",
+					"children": [
+						{
+							"name": "Actions",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "ShiftAction",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\Actions\\ShiftAction.luau"]
+								}
+							]
+						},
+						{
+							"name": "Skills",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "DashSkill",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\Skills\\DashSkill.luau"]
+								},
+								{
+									"name": "FireballSkill",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\Skills\\FireballSkill.luau"]
+								}
+							]
+						},
+						{
+							"name": "StatusEffects",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "ColdEffect",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\StatusEffects\\ColdEffect.luau"]
+								},
+								{
+									"name": "HeatEffect",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\StatusEffects\\HeatEffect.luau"]
+								},
+								{
+									"name": "MeltEffect",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\StatusEffects\\MeltEffect.luau"]
+								}
+							]
+						},
+						{
+							"name": "Weapons",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "FistWeapon",
+									"className": "ModuleScript",
+									"filePaths": ["out\\shared\\Weapons\\FistWeapon.luau"]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "rbxts_include",
+					"className": "Folder",
+					"children": [
+						{ "name": "Promise", "className": "ModuleScript", "filePaths": ["include\\Promise.lua"] },
+						{ "name": "RuntimeLib", "className": "ModuleScript", "filePaths": ["include\\RuntimeLib.lua"] },
+						{
+							"name": "node_modules",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "@rbxts",
+									"className": "Folder",
+									"children": [
+										{
+											"name": "object-utils",
+											"className": "ModuleScript",
+											"filePaths": ["node_modules\\@rbxts\\object-utils\\init.lua"]
+										},
+										{
+											"name": "services",
+											"className": "ModuleScript",
+											"filePaths": ["node_modules\\@rbxts\\services\\init.lua"]
+										},
+										{
+											"name": "simpleaction",
+											"className": "Folder",
+											"children": [
+												{
+													"name": "out",
+													"className": "ModuleScript",
+													"filePaths": ["node_modules\\@rbxts\\simpleaction\\out\\init.luau"]
+												}
+											]
+										},
+										{
+											"name": "simpleskill",
+											"className": "Folder",
+											"children": [
+												{
+													"name": "out",
+													"className": "ModuleScript",
+													"filePaths": ["node_modules\\@rbxts\\simpleskill\\out\\init.luau"]
+												}
+											]
+										},
+										{
+											"name": "simplestatuseffect",
+											"className": "Folder",
+											"children": [
+												{
+													"name": "out",
+													"className": "ModuleScript",
+													"filePaths": [
+														"node_modules\\@rbxts\\simplestatuseffect\\out\\init.luau"
+													]
+												}
+											]
+										},
+										{
+											"name": "simpletimer",
+											"className": "Folder",
+											"children": [
+												{
+													"name": "out",
+													"className": "ModuleScript",
+													"filePaths": ["node_modules\\@rbxts\\simpletimer\\out\\init.luau"]
+												}
+											]
+										},
+										{
+											"name": "simpleweapon",
+											"className": "Folder",
+											"children": [
+												{
+													"name": "out",
+													"className": "ModuleScript",
+													"filePaths": ["node_modules\\@rbxts\\simpleweapon\\out\\init.luau"]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ServerScriptService",
+			"className": "ServerScriptService",
+			"children": [
+				{
+					"name": "TS",
+					"className": "Folder",
+					"children": [
+						{ "name": "main", "className": "Script", "filePaths": ["out\\server\\main.server.luau"] }
+					]
+				}
+			]
+		},
+		{
+			"name": "StarterPlayer",
+			"className": "StarterPlayer",
+			"children": [
+				{
+					"name": "StarterPlayerScripts",
+					"className": "StarterPlayerScripts",
+					"children": [
+						{
+							"name": "TS",
+							"className": "Folder",
+							"children": [
+								{
+									"name": "main",
+									"className": "LocalScript",
+									"filePaths": ["out\\client\\main.client.luau"]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

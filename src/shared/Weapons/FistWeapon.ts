@@ -1,19 +1,12 @@
-import { MeleeWeaponType } from "@rbxts/simpleweapon";
+import { MeleeWeapon } from "@rbxts/simpleweapon";
 
-const FistWeapon: MeleeWeaponType = {
+const FistWeapon: MeleeWeapon = {
 	Name: "Fist",
-	Damage: 10,
+	M1Damage: 10,
 	Range: 3,
-	WeaponType: "Melee",
-	Endlag: 0.5,
 	ComboReset: 0.75,
 	Cooldown: 0.2,
-	ClientAttack: (model: Model) => {
-		print(`Client: Displaying fist attack effects for ${model.Name}`);
-	},
-	ServerAttack: (model: Model) => {
-		print(`Server: Fist attack by ${model.Name}`);
-	},
+
 	Animations: {
 		Idle: "rbxassetid://18805809333",
 		Walk: "rbxassetid://18726527022",
@@ -21,9 +14,20 @@ const FistWeapon: MeleeWeaponType = {
 		M1: {
 			[1]: "23",
 		},
-		HitReactions: {
-			[1]: "rbxassetid://18735088954",
-		},
+	},
+
+	Attributes: ["attacking"],
+	AttackRestrictions: ["attacking", "blocking"],
+
+	clientAttack: (model: Model) => {
+		print(`Client: Displaying fist attack effects for ${model.Name}`);
+	},
+	serverAttack: (model: Model) => {
+		print(`Server: Fist attack by ${model.Name}`);
+	},
+
+	block: (model: Model) => {
+		print(`${model.Name} is blocking`);
 	},
 };
 

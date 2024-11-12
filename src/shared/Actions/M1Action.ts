@@ -7,17 +7,19 @@ const M1Action: ActionType = {
 	Gesture: Enum.UserInputType.MouseButton1,
 	ClientOnStart: (player) => {
 		if (player.Character) {
-			const currentWeapon = player.Character.GetAttribute("CurrentWeapon") as string;
-			if (currentWeapon) {
-				simpleWeapon.executeClientAttack(currentWeapon, player.Character);
+			const currentWeapon = player.Character.GetAttribute("currentweapon") as string;
+			const weapon = simpleWeapon.getWeapon(currentWeapon);
+			if (weapon) {
+				simpleWeapon.M1(weapon, player.Character);
 			}
 		}
 	},
 	ServerOnStart: (player) => {
 		if (player.Character) {
-			const currentWeapon = player.Character.GetAttribute("CurrentWeapon") as string;
-			if (currentWeapon) {
-				simpleWeapon.executeServerAttack(currentWeapon, player.Character);
+			const currentWeapon = player.Character.GetAttribute("currentweapon") as string;
+			const weapon = simpleWeapon.getWeapon(currentWeapon);
+			if (weapon) {
+				simpleWeapon.M1(weapon, player.Character);
 			}
 		}
 	},
