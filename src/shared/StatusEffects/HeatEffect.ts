@@ -1,20 +1,27 @@
-import { StatusType } from "@rbxts/simplestatuseffect";
+import { StatusEffectType } from "@rbxts/simplelibrary/out/SimpleLibrary/StatusEffect";
 
-const HeatEffect: StatusType = {
+const HeatEffect: StatusEffectType = {
 	Name: "Heat",
-	Duration: 10,
-	Tick: 1,
-	Effect: (model: Model) => {
-		const Humanoid = model.FindFirstChildWhichIsA("Humanoid");
-		if (Humanoid) {
-			Humanoid.Health -= 1;
+	Duration: 20,
+	Tick: 0.2,
+	Stackable: true,
+	MaxStacks: 10,
+
+	StatusAttributes: ["heat"],
+	Modifiers: new Map([["cold", "melt"]]),
+
+	OnExpired: (model) => {
+		const char = model as Model;
+		print(HeatEffect.Name, "has expired", char.Name);
+	},
+
+	OnTick: (model, remainingTime) => {
+		const char = model as Model;
+		const humanoid = char.FindFirstChildWhichIsA("Humanoid");
+		if (humanoid) {
+			humanoid.Health -= 1;
 		}
 	},
-	Completion: (model: Model) => {
-		print(`${model.Name} has completed the Heat effect.`);
-	},
-	StatusAttributes: ["Heat"],
-	Modifiers: new Map([["Cold", "Melt"]]),
 };
 
 export = HeatEffect;

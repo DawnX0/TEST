@@ -1,18 +1,16 @@
 {
 	"name": "roblox-ts-game",
+	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
 		"$className": "DataModel",
-		"HttpService": {
-			"$className": "HttpService",
-			"$properties": {
-				"HttpEnabled": true
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"TS": {
+				"$path": "out/server"
 			}
 		},
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
-			"TS": {
-				"$path": "out/shared"
-			},
 			"rbxts_include": {
 				"$path": "include",
 				"node_modules": {
@@ -21,18 +19,9 @@
 						"$path": "node_modules/@rbxts"
 					}
 				}
-			}
-		},
-		"ServerScriptService": {
-			"$className": "ServerScriptService",
+			},
 			"TS": {
-				"$path": "out/server"
-			}
-		},
-		"SoundService": {
-			"$className": "SoundService",
-			"$properties": {
-				"RespectFilteringEnabled": true
+				"$path": "out/shared"
 			}
 		},
 		"StarterPlayer": {
@@ -46,13 +35,21 @@
 		},
 		"Workspace": {
 			"$className": "Workspace",
-			"Rig": {
-				"$className": "Model"
-			},
 			"$properties": {
 				"FilteringEnabled": true
 			}
+		},
+		"HttpService": {
+			"$className": "HttpService",
+			"$properties": {
+				"HttpEnabled": true
+			}
+		},
+		"SoundService": {
+			"$className": "SoundService",
+			"$properties": {
+				"RespectFilteringEnabled": true
+			}
 		}
-	},
-	"ignoreGlobs": ["**/package.json", "**/tsconfig.json"]
+	}
 }

@@ -1,25 +1,17 @@
-import { SkillData } from "@rbxts/simpleskill";
+import { SkillType } from "@rbxts/simplelibrary/out/SimpleLibrary/Skill";
 
-// ReplicatedStorage/Skills/FireballSkill.module.ts
-const FireballSkill: SkillData = {
+const Fireball: SkillType = {
 	Name: "Fireball",
-	Cooldown: 5,
-	CastTime: 2,
+	Cooldown: 3,
+	Interaction: "Tap",
 
-	// Client-side function to display visual effects
-	Client: (model: Model) => {
-		print(`Client: Displaying fireball effects for ${model.Name}`);
-		// Add particle effects, sounds, etc.
+	Client: (Model) => {
+		print(`Client: ${Model.Name} has cast Fireball!`);
 	},
 
-	// Server-side function to handle server logic
-	Server: (model: Model) => {
-		print(`Server: Fireball cast by ${model.Name}`);
-		// Apply damage, cooldowns, etc.
+	Server: (Model) => {
+		print(`Server: ${Model.Name} has cast Fireball!`);
 	},
-
-	SkillAttributes: ["attacking"],
-	SkillRestrictions: ["movement"],
 };
 
-export = FireballSkill;
+export = Fireball;

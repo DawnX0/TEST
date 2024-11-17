@@ -1,43 +1,43 @@
-import { ActionType } from "@rbxts/simpleaction";
+import { ActionType } from "@rbxts/simplelibrary/out/SimpleLibrary/Action";
+import { PlayAnimation, StopAnimation } from "@rbxts/simplelibrary/out/Utility/Animation";
+import { GetAnimator } from "@rbxts/simplelibrary/out/Utility/GetAnimator";
 
 const RunAction: ActionType = {
 	Name: "Run",
 	InputMethod: "UserInput",
 	Gesture: Enum.KeyCode.W,
+	DoubleTap: true,
+	DoubleTapThreshold: 0.3,
+	Restricitons: ["attacking"],
+
 	ClientOnStart: (player: Player) => {
-		const character = player.Character;
-		if (character) {
-			const lastTick = (character.GetAttribute("sprintTick") as number) || 0;
-			if (lastTick && tick() - lastTick < 0.25) {
-				const humanoid = character.FindFirstChildWhichIsA("Humanoid");
-				if (humanoid) {
-					humanoid.WalkSpeed = 32;
-				}
-			}
-			character.SetAttribute("sprintTick", tick());
-		}
+		const character = player.Character as Model;
+		const humanoid = character.FindFirstChildWhichIsA("Humanoid");
+
+		if (humanoid && character) {
+			PlayAnimation(character, "rbxassetid://18495070753", "run");
+			humanoid.WalkSpeed = 32;
+		} else error(`Couldn't find humanoid in ${character.Name}`);
 	},
+
 	ClientOnEnd: (player: Player) => {
-		const character = player.Character;
-		if (character) {
-			const humanoid = character.FindFirstChildWhichIsA("Humanoid");
-			if (humanoid) {
-				humanoid.WalkSpeed = 16;
-			}
-		}
+		const character = player.Character as Model;
+		const humanoid = character.FindFirstChildWhichIsA("Humanoid");
+		const animator = GetAnimator(character);
+
+		if (humanoid && animator) {
+			StopAnimation(animator, "run");
+			humanoid.WalkSpeed = 16;
+		} else error(`Couldn't find humanoid in ${character.Name}`);
 	},
+
 	ServerOnStart: (player: Player) => {
-		const character = player.Character;
-		if (character) {
-			character.SetAttribute("running", true);
-		}
+		player.Character!.SetAttribute("running", true);
 	},
+
 	ServerOnEnd: (player: Player) => {
-		const character = player.Character;
-		if (character) {
-			character.SetAttribute("running", undefined);
-		}
+		player.Character!.SetAttribute("running", undefined);
 	},
-	TouchButton: false,
 };
+
 export = RunAction;

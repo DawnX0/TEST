@@ -1,24 +1,22 @@
-import { StatusType } from "@rbxts/simplestatuseffect";
+import { StatusEffectType } from "@rbxts/simplelibrary/out/SimpleLibrary/StatusEffect";
 
-const ColdEffect: StatusType = {
+const ColdEffect: StatusEffectType = {
 	Name: "Cold",
 	Duration: 10,
-	Tick: 0.1,
-	Effect: (model: Model) => {
-		const Humanoid = model.FindFirstChildWhichIsA("Humanoid");
-		if (Humanoid) {
-			Humanoid.WalkSpeed = 5;
-		}
+	Tick: 0.5,
+	Stackable: true,
+	MaxStacks: 50,
+
+	StatusAttributes: ["cold"],
+	Modifiers: new Map([["heat", "melt"]]),
+
+	OnExpired: (arg) => {
+		print(ColdEffect.Name, "has expired");
 	},
-	Completion: (model: Model) => {
-		const Humanoid = model.FindFirstChildWhichIsA("Humanoid");
-		print("222");
-		if (Humanoid) {
-			Humanoid.WalkSpeed = 16;
-		}
+
+	OnTick: (arg) => {
+		print(ColdEffect.Name, "has ticked");
 	},
-	StatusAttributes: ["Cold"],
-	Modifiers: new Map([["Heat", "Melt"]]),
 };
 
 export = ColdEffect;

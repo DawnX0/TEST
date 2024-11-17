@@ -1,6 +1,4 @@
 import { Players } from "@rbxts/services";
-import simpleAction from "@rbxts/simpleaction";
+import { SimpleListen } from "@rbxts/simplelibrary/out/Utility/SimpleListen";
 
-const player = Players.LocalPlayer;
-
-simpleAction.StartClient(player);
+SimpleListen(Players.LocalPlayer);
