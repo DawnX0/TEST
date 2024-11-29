@@ -1,5 +1,5 @@
 import { ActionType } from "@rbxts/simplelibrary/out/SimpleLibrary/Action";
-import { SimpleCastSkill } from "@rbxts/simplelibrary/out/Utility/SimpleCastSkill";
+import { SimpleCastSkill } from "@rbxts/simplelibrary/out/Utility/SimpleSkillFunctions";
 
 const SkillOneAction: ActionType = {
 	Name: "SkillOne",

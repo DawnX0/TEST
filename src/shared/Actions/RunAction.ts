@@ -1,6 +1,6 @@
 import { ActionType } from "@rbxts/simplelibrary/out/SimpleLibrary/Action";
-import { PlayAnimation, StopAnimation } from "@rbxts/simplelibrary/out/Utility/Animation";
-import { GetAnimator } from "@rbxts/simplelibrary/out/Utility/GetAnimator";
+import { PlayAnimation, StopAnimation } from "@rbxts/simplelibrary/out/Utility/SimpleMiscFunctions";
+import { GetAnimator } from "@rbxts/simplelibrary/out/Utility/SimpleMiscFunctions";
 
 const RunAction: ActionType = {
 	Name: "Run",
@@ -8,15 +8,14 @@ const RunAction: ActionType = {
 	Gesture: Enum.KeyCode.W,
 	DoubleTap: true,
 	DoubleTapThreshold: 0.3,
-	Restricitons: ["attacking"],
+	Restrictions: ["attacking", "blocking"],
 
 	ClientOnStart: (player: Player) => {
 		const character = player.Character as Model;
 		const humanoid = character.FindFirstChildWhichIsA("Humanoid");
 
 		if (humanoid && character) {
-			PlayAnimation(character, "rbxassetid://18495070753", "run");
-			humanoid.WalkSpeed = 32;
+			PlayAnimation(character, "rbxassetid://18495070753", "run", Enum.AnimationPriority.Action2);
 		} else error(`Couldn't find humanoid in ${character.Name}`);
 	},
 
@@ -26,17 +25,20 @@ const RunAction: ActionType = {
 		const animator = GetAnimator(character);
 
 		if (humanoid && animator) {
-			StopAnimation(animator, "run");
-			humanoid.WalkSpeed = 16;
+			StopAnimation(player.Character!, "run");
 		} else error(`Couldn't find humanoid in ${character.Name}`);
 	},
 
 	ServerOnStart: (player: Player) => {
 		player.Character!.SetAttribute("running", true);
+		const humanoid = player.Character!.FindFirstChildWhichIsA("Humanoid");
+		humanoid!.WalkSpeed = 32;
 	},
 
 	ServerOnEnd: (player: Player) => {
 		player.Character!.SetAttribute("running", undefined);
+		const humanoid = player.Character!.FindFirstChildWhichIsA("Humanoid");
+		humanoid!.WalkSpeed = 16;
 	},
 };
 

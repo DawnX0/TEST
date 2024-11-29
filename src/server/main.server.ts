@@ -1,14 +1,13 @@
 import { Players } from "@rbxts/services";
-import { SimpleListen } from "@rbxts/simplelibrary/out/Utility/SimpleListen";
-import { SimpleApplySE } from "@rbxts/simplelibrary/out/Utility/SimpleApplySE";
-import { SimpleAssignWeapon } from "@rbxts/simplelibrary/out/Utility/SimpleAssignWeapon";
-import { SimpleKnockback } from "@rbxts/simplelibrary/out/Utility/SimpleKnockback";
+import { SimpleListen } from "@rbxts/simplelibrary/out/Utility/SimpleActionFunctions";
+import { SimpleApplySE } from "@rbxts/simplelibrary/out/Utility/SimpleSEFunctions";
+import { SimpleAssignWeapon } from "@rbxts/simplelibrary/out/Utility/SimpleWeaponFunctions";
 
 SimpleListen(Players.LocalPlayer);
 
 Players.PlayerAdded.Connect((player) => {
 	player.CharacterAdded.Connect((character) => {
-		SimpleAssignWeapon(character, "fist", true);
+		SimpleAssignWeapon(character, "sword");
 		SimpleApplySE(character, character.Name, "heat");
 		task.wait(4);
 		SimpleApplySE(character, character.Name, "cold");
